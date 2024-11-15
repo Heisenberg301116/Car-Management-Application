@@ -1,0 +1,164 @@
+import React, { useState, useEffect, useRef } from 'react'; // Added useRef
+import { useNavigate, useParams } from 'react-router-dom';
+import api from '../api'; // Make sure this points to your API
+
+const AddEditCar = () => {
+    const { id } = useParams();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [tags, setTags] = useState('');
+    const [existingImages, setExistingImages] = useState([]); // Images already in the car
+    const [imagesToUpload, setImagesToUpload] = useState([]); // New images to upload
+    const navigate = useNavigate();
+    const fileInputRef = useRef(null); // Ref for the file input
+
+    // Fetch car details for editing
+    useEffect(() => {
+        if (id) {
+            const fetchCar = async () => {
+                const response = await api.getCar(id);
+                setTitle(response.data.title);
+                setDescription(response.data.description);
+                setTags(response.data.tags.join(', '));
+                setExistingImages(response.data.images); // Set existing images
+            };
+            fetchCar();
+        }
+    }, [id]);
+
+    // Function to upload images to Cloudinary
+    const uploadImage = async (image) => {
+        const formData = new FormData();
+        formData.append('file', image);
+        formData.append('upload_preset', 'your_upload_preset'); // Cloudinary upload preset
+
+        try {
+            const response = await api.uploadImage(formData); // POST to your server API endpoint
+            return response.data.url;
+        } catch (error) {
+            console.error("Error uploading image:", error);
+            return null;
+        }
+    };
+
+    const handleSubmit = async () => {
+        // Check if total images exceed 10
+        if (existingImages.length + imagesToUpload.length > 10) {
+            alert('You can only add up to 10 images for a car.');
+            return;
+        }
+
+        // Upload new images to Cloudinary
+        const uploadedImageUrls = await Promise.all(
+            Array.from(imagesToUpload).map((image) => uploadImage(image))
+        );
+
+        // If any image upload failed, stop the form submission
+        if (uploadedImageUrls.includes(null)) {
+            alert("Failed to upload images. Please try again.");
+            return;
+        }
+
+        // Construct car data with existing and new image URLs
+        const carData = {
+            title,
+            description,
+            tags: tags.split(',').map(tag => tag.trim()),
+            images: [...existingImages, ...uploadedImageUrls], // Combine existing and new images
+        };
+
+        // If we are editing, update the car, else create a new one
+        if (id) {
+            await api.updateCar(id, carData);
+        } else {
+            await api.createCar(carData);
+        }
+
+        navigate('/cars'); // Redirect to cars list page
+    };
+
+    // Remove an image from the existing images
+    const handleRemoveExistingImage = (index) => {
+        setExistingImages(existingImages.filter((_, i) => i !== index));
+    };
+
+    // Handle new image selection
+    const handleImageSelection = (files) => {
+        if (existingImages.length + files.length > 10) {
+            alert(`You can only upload ${10 - existingImages.length} more image(s).`);
+            fileInputRef.current.value = ''; // Reset file input
+            return;
+        }
+        setImagesToUpload([...imagesToUpload, ...files]);
+    };
+
+    return (
+        <div>
+            <h2>{id ? 'Edit' : 'Add'} Car</h2>
+            <input
+                placeholder="Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+            />
+            <textarea
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+                placeholder="Tags (comma-separated)"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+            />
+
+            {/* Render existing images */}
+            {id && <div>
+                <h3>Existing Images</h3>
+                {existingImages.length > 0 ? (
+                    existingImages.map((image, index) => (
+                        <div key={index} style={{ position: 'relative', display: 'inline-block', margin: '10px' }}>
+                            <img
+                                src={image}
+                                alt={`Car ${index + 1}`}
+                                style={{ width: '100px', height: 'auto', borderRadius: '5px' }}
+                            />
+                            <button
+                                onClick={() => handleRemoveExistingImage(index)}
+                                style={{
+                                    position: 'absolute',
+                                    top: '0',
+                                    right: '0',
+                                    background: 'red',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '50%',
+                                    cursor: 'pointer',
+                                    padding: '5px'
+                                }}
+                            >
+                                X
+                            </button>
+                        </div>
+                    ))
+                ) : (
+                    <p>No existing images.</p>
+                )}
+            </div>}
+
+            {/* Upload new images */}
+            <div>
+                <h3>Upload New Images</h3>
+                <input
+                    type="file"
+                    multiple
+                    ref={fileInputRef} // Attach ref to the file input
+                    onChange={(e) => handleImageSelection(Array.from(e.target.files))}
+                />
+            </div>
+
+            <button onClick={handleSubmit}>Save</button>
+        </div>
+    );
+};
+
+export default AddEditCar;

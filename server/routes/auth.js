@@ -5,12 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
 
-/**
- * @swagger
- * tags:
- *   name: UserAuthentication
- *   description: User authentication (signup, login) API
- */
 
 /**
  * @swagger

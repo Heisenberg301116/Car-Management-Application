@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DataProvider from './context/DataProvider'
+import DataProvider from './context/DataProvider';
 import Header from './components/Header';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
@@ -11,7 +11,7 @@ import Home from './pages/Home';
 
 const App = () => (
   <DataProvider>
-    <Router>
+    <Router basename="/Car-Management-Application">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

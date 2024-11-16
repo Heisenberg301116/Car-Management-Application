@@ -11,9 +11,11 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(''); // State to store message
     const [messageType, setMessageType] = useState(''); // 'success' or 'error'
+    const [loading, setLoading] = useState(false); // Loading state
     const navigate = useNavigate();
 
     const handleSignup = async () => {
+        setLoading(true); // Set loading to true when the request starts
         try {
             // Attempt to signup the user
             await api.signup({ email, password });
@@ -39,6 +41,8 @@ const Signup = () => {
                 setMessage('Signup failed! Something went wrong.');
             }
             setMessageType('error');
+        } finally {
+            setLoading(false); // Set loading to false once the request is finished (success or error)
         }
     };
 
@@ -65,8 +69,12 @@ const Signup = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className="signup-button" onClick={handleSignup}>
-                    Signup
+                <button className="signup-button" onClick={handleSignup} disabled={loading}>
+                    {loading ? (
+                        <span>Creating account, please wait !</span>
+                    ) : (
+                        'Signup'
+                    )}
                 </button>
             </div>
         </div>

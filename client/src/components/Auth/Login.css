@@ -15,7 +15,8 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #f9f9f9; /* Light shade background */
+    background: #f9f9f9;
+    /* Light shade background */
     color: #333;
     padding: 1rem;
 }
@@ -26,7 +27,8 @@ body {
     margin-bottom: 1rem;
     font-weight: bold;
     color: #444;
-    text-align: center; /* Ensure text is centered */
+    text-align: center;
+    /* Ensure text is centered */
 }
 
 /* Form Wrapper */
@@ -60,7 +62,8 @@ body {
 }
 
 .login-input:focus {
-    border-color: #4caf50; /* Light green for focus */
+    border-color: #4caf50;
+    /* Light green for focus */
     box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
 }
 
@@ -68,7 +71,8 @@ body {
 .login-button {
     width: 100%;
     padding: 0.8rem;
-    background: #4caf50; /* Light green background */
+    background: #4caf50;
+    /* Light green background */
     border: none;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -76,12 +80,14 @@ body {
     color: #fff;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    margin-top: 1rem; /* Add some space above the button */
+    margin-top: 1rem;
+    /* Add some space above the button */
 }
 
 .login-button:hover {
     background: #45a049;
-    transform: scale(1.02); /* Slight zoom on hover */
+    transform: scale(1.02);
+    /* Slight zoom on hover */
 }
 
 /* Alert Message Styles */

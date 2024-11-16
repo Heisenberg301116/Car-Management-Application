@@ -11,21 +11,25 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(''); // New state for message
     const [messageType, setMessageType] = useState(''); // 'success' or 'error'
+    const [loading, setLoading] = useState(false); // New state for loading spinner
     const navigate = useNavigate();
 
     const handleLogin = async () => {
+        setLoading(true); // Set loading to true when API request starts
         try {
             const response = await api.login({ email, password });
             localStorage.setItem('token', response.data.token); // Store token
             setMessage('Login successful! Redirecting to cars...'); // Success message
             setMessageType('success');
-            setloggedin(true)
+            setloggedin(true);
             setTimeout(() => {
                 navigate('/cars'); // Redirect to car list after a short delay
             }, 500);
         } catch (error) {
             setMessage('Login failed! Please check your credentials.'); // Error message
             setMessageType('error');
+        } finally {
+            setLoading(false); // Set loading to false once API call finishes
         }
     };
 
@@ -52,8 +56,12 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className="login-button" onClick={handleLogin}>
-                    Login
+                <button className="login-button" onClick={handleLogin} disabled={loading}>
+                    {loading ? (
+                        <span>Logging, Please Wait !</span> 
+                    ) : (
+                        'Login'
+                    )}
                 </button>
             </div>
         </div>

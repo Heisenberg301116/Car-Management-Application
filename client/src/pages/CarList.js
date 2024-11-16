@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { DataContext } from '../context/DataProvider';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import './CarList.css'; // Import the CSS file
 
 const CarList = () => {
+    const { loggedin } = useContext(DataContext);
     const [cars, setCars] = useState([]);
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
+
+    // Redirect to login if not logged in
+    useEffect(() => {
+        if (!loggedin) {
+            navigate('/login');
+        }
+    }, [loggedin, navigate]);
 
     useEffect(() => {
         const fetchCars = async () => {

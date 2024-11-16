@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { DataContext } from '../context/DataProvider';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../api'; // Make sure this points to your API
 import './AddEditCar.css'; // Import the CSS file
 
 const AddEditCar = () => {
+    const { loggedin } = useContext(DataContext);
     const { id } = useParams();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -13,15 +15,27 @@ const AddEditCar = () => {
     const navigate = useNavigate();
     const fileInputRef = useRef(null); // Ref for the file input
 
+    // Redirect to login if not logged in
+    useEffect(() => {
+        if (!loggedin) {
+            // console.log("================> reresehed !!!")
+            navigate('/login');
+        }
+    }, [loggedin, navigate]);
+
     // Fetch car details for editing
     useEffect(() => {
         if (id) {
             const fetchCar = async () => {
-                const response = await api.getCar(id);
-                setTitle(response.data.title);
-                setDescription(response.data.description);
-                setTags(response.data.tags.join(', '));
-                setExistingImages(response.data.images); // Set existing images
+                try {
+                    const response = await api.getCar(id);
+                    setTitle(response.data.title);
+                    setDescription(response.data.description);
+                    setTags(response.data.tags.join(', '));
+                    setExistingImages(response.data.images); // Set existing images
+                } catch (error) {
+                    console.error('Error fetching car details:', error);
+                }
             };
             fetchCar();
         }
@@ -69,13 +83,17 @@ const AddEditCar = () => {
         };
 
         // If we are editing, update the car, else create a new one
-        if (id) {
-            await api.updateCar(id, carData);
-        } else {
-            await api.createCar(carData);
+        try {
+            if (id) {
+                await api.updateCar(id, carData);
+            } else {
+                await api.createCar(carData);
+            }
+            navigate('/cars'); // Redirect to cars list page
+        } catch (error) {
+            console.error("Error saving car:", error);
+            alert("An error occurred while saving the car.");
         }
-
-        navigate('/cars'); // Redirect to cars list page
     };
 
     // Remove an image from the existing images

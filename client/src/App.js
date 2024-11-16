@@ -11,7 +11,7 @@ import Home from './pages/Home';
 
 const App = () => (
   <DataProvider>
-    <Router basename="/Car-Management-Application">
+    <Router >
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

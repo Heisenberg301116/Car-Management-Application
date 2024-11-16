@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { DataContext } from '../context/DataProvider';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import './CarDetails.css';  // Importing the CSS file
 
 const CarDetails = () => {
+    const { loggedin } = useContext(DataContext);
     const { id } = useParams();
     const [car, setCar] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Redirect to login if not logged in
+        if (!loggedin) {
+            // console.log("================> reresehed !!!")
+            navigate('/login');
+        }
+    }, [loggedin, navigate]);
 
     useEffect(() => {
         const fetchCar = async () => {
@@ -69,13 +79,13 @@ const CarDetails = () => {
 
             {/* Buttons Section */}
             <div className="car-details-buttons">
-                <button 
-                    className="car-details-button car-details-edit-button" 
+                <button
+                    className="car-details-button car-details-edit-button"
                     onClick={() => navigate(`/edit-car/${id}`)}>
                     Edit
                 </button>
-                <button 
-                    className="car-details-button car-details-delete-button" 
+                <button
+                    className="car-details-button car-details-delete-button"
                     onClick={handleDelete}>
                     Delete
                 </button>

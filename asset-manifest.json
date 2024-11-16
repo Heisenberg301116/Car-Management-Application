@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Heisenberg301116/Car-Management-Application/static/css/main.9a778119.css",
+    "main.js": "/Heisenberg301116/Car-Management-Application/static/js/main.35be10a5.js",
+    "static/js/453.419a5d54.chunk.js": "/Heisenberg301116/Car-Management-Application/static/js/453.419a5d54.chunk.js",
+    "index.html": "/Heisenberg301116/Car-Management-Application/index.html",
+    "main.9a778119.css.map": "/Heisenberg301116/Car-Management-Application/static/css/main.9a778119.css.map",
+    "main.35be10a5.js.map": "/Heisenberg301116/Car-Management-Application/static/js/main.35be10a5.js.map",
+    "453.419a5d54.chunk.js.map": "/Heisenberg301116/Car-Management-Application/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a778119.css",
+    "static/js/main.35be10a5.js"
+  ]
+}

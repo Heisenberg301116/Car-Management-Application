@@ -1,0 +1,127 @@
+/* General Styles */
+.add-edit-car-container {
+    padding: 2rem;
+    background-color: #f4f7fc;
+    font-family: Arial, sans-serif;
+    color: #333;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-edit-car-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Form Inputs */
+.add-edit-car-input,
+.add-edit-car-textarea,
+.add-edit-car-tags {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.add-edit-car-input:focus,
+.add-edit-car-textarea:focus,
+.add-edit-car-tags:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Existing Images Section */
+.add-edit-car-images-section {
+    margin-top: 2rem;
+}
+
+.add-edit-car-images-section h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.add-edit-car-existing-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.add-edit-car-existing-image {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.add-edit-car-existing-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.add-edit-car-remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* New Image Upload Section */
+.add-edit-car-upload-section {
+    margin-top: 2rem;
+}
+
+.add-edit-car-upload-section h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.add-edit-car-upload-input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/* Save Button */
+.add-edit-car-save-button {
+    display: block;
+    width: 50%;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem auto 0 auto;
+    transition: background-color 0.3s;
+}
+
+.add-edit-car-save-button:hover {
+    background-color: #45a049;
+}
+
+.add-edit-car-save-button:active {
+    transform: scale(0.98);
+}

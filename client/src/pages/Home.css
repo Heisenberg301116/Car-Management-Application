@@ -1,0 +1,92 @@
+/* Home.css */
+
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Home Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f4f7fc;
+    /* Light background for a calm feel */
+    color: #333;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Title */
+.home-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+}
+
+/* Description */
+.home-description {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Button Styling */
+.home-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.home-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #fff;
+    background-color: #4caf50;
+    /* Green color */
+}
+
+.home-button:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+    transform: scale(1.05);
+    /* Slight zoom effect */
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .home-container {
+        padding: 1rem;
+    }
+
+    .home-title {
+        font-size: 2rem;
+    }
+
+    .home-description {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .home-button {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}

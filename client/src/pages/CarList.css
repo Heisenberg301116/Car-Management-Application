@@ -1,0 +1,186 @@
+/* CarList.css */
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.main-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.carlist-container {
+    padding: 2rem;
+    background-color: #f4f7fc;
+    /* Light background */
+}
+
+.carlist-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0rem;
+    /* text-align: center; */
+}
+
+.carlist-search {
+    width: 50%;
+    padding: 0.8rem;
+    margin: 1rem auto;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    display: block;
+}
+
+
+.carlist-search:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.carlist-add-button {
+    display: block;
+    width: 20%;
+    /* You can adjust the width as needed */
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1.5rem auto;
+    /* Centers the button horizontally with auto margin */
+    transition: background-color 0.3s;
+}
+
+
+.carlist-add-button:hover {
+    background-color: #45a049;
+}
+
+/* Car List Item Styling */
+.carlist-items {
+    list-style: none;
+    padding: 0;
+}
+
+.carlist-item {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.carlist-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.01);
+}
+
+/* Car Item Content */
+.carlist-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.carlist-title,
+.carlist-description,
+.carlist-tags {
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.carlist-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.carlist-tag {
+    background-color: #5b29f3;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+/* Car Images Section */
+.carlist-images {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.carlist-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* More Images Section */
+.carlist-more-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    background-color: #e2e0e2;
+    /* Soft gray background */
+    color: #f30606;
+    /* Red text */
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .carlist-container {
+        padding: 1rem;
+    }
+
+    .carlist-title {
+        font-size: 1.8rem;
+    }
+
+    .carlist-search,
+    .carlist-add-button {
+        font-size: 1rem;
+    }
+
+    .carlist-item-content {
+        gap: 0.5rem;
+    }
+
+    .carlist-title {
+        font-size: 1.2rem;
+    }
+
+    .carlist-description {
+        font-size: 0.9rem;  
+    }
+
+    .carlist-tags {
+        flex-direction: column;
+    }
+
+    .carlist-image {
+        width: 80px;
+        height: 80px;
+    }
+}

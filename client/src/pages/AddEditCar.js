@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'; // Added useRef
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../api'; // Make sure this points to your API
+import './AddEditCar.css'; // Import the CSS file
 
 const AddEditCar = () => {
     const { id } = useParams();
@@ -93,70 +94,74 @@ const AddEditCar = () => {
     };
 
     return (
-        <div>
-            <h2>{id ? 'Edit' : 'Add'} Car</h2>
+        <div className="add-edit-car-container">
+            <h2 className="add-edit-car-header">{id ? 'Edit' : 'Add'} Car</h2>
+
             <input
+                className="add-edit-car-input"
                 placeholder="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
             <textarea
+                className="add-edit-car-textarea"
                 placeholder="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
             <input
+                className="add-edit-car-tags"
                 placeholder="Tags (comma-separated)"
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
             />
 
             {/* Render existing images */}
-            {id && <div>
-                <h3>Existing Images</h3>
-                {existingImages.length > 0 ? (
-                    existingImages.map((image, index) => (
-                        <div key={index} style={{ position: 'relative', display: 'inline-block', margin: '10px' }}>
-                            <img
-                                src={image}
-                                alt={`Car ${index + 1}`}
-                                style={{ width: '100px', height: 'auto', borderRadius: '5px' }}
-                            />
-                            <button
-                                onClick={() => handleRemoveExistingImage(index)}
-                                style={{
-                                    position: 'absolute',
-                                    top: '0',
-                                    right: '0',
-                                    background: 'red',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '50%',
-                                    cursor: 'pointer',
-                                    padding: '5px'
-                                }}
-                            >
-                                X
-                            </button>
+            {id && (
+                <div className="add-edit-car-images-section">
+                    <h3>Existing Images</h3>
+                    {existingImages.length > 0 ? (
+                        <div className="add-edit-car-existing-images">
+                            {existingImages.map((image, index) => (
+                                <div key={index} className="add-edit-car-existing-image">
+                                    <img
+                                        src={image}
+                                        alt={`Car ${index + 1}`}
+                                    />
+                                    <button
+                                        className="add-edit-car-remove-button"
+                                        onClick={() => handleRemoveExistingImage(index)}
+                                    >
+                                        X
+                                    </button>
+                                </div>
+                            ))}
                         </div>
-                    ))
-                ) : (
-                    <p>No existing images.</p>
-                )}
-            </div>}
+                    ) : (
+                        <p>No existing images.</p>
+                    )}
+                </div>
+            )}
 
             {/* Upload new images */}
-            <div>
+            <div className="add-edit-car-upload-section">
                 <h3>Upload New Images</h3>
                 <input
+                    className="add-edit-car-upload-input"
                     type="file"
                     multiple
-                    ref={fileInputRef} // Attach ref to the file input
+                    ref={fileInputRef}
                     onChange={(e) => handleImageSelection(Array.from(e.target.files))}
                 />
             </div>
 
-            <button onClick={handleSubmit}>Save</button>
+            {/* Save Button */}
+            <button
+                className="add-edit-car-save-button"
+                onClick={handleSubmit}
+            >
+                Save
+            </button>
         </div>
     );
 };

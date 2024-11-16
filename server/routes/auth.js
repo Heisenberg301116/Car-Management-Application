@@ -1,10 +1,45 @@
+// routes/userAuth.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
 
-// User Registration (Signup)
+/**
+ * @swagger
+ * tags:
+ *   name: UserAuthentication
+ *   description: User authentication (signup, login) API
+ */
+
+/**
+ * @swagger
+ * /auth/signup:
+ *   post:
+ *     summary: Register a new user
+ *     description: This endpoint allows users to register by providing their email and password.
+ *     tags: [UserAuth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: The email of the user
+ *               password:
+ *                 type: string
+ *                 description: The password of the user
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ *       400:
+ *         description: User already exists or invalid input
+ *       500:
+ *         description: Server error
+ */
 router.post('/signup', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -30,7 +65,42 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// User Login
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: User login
+ *     description: This endpoint allows users to login with their email and password, and obtain a JWT token.
+ *     tags: [UserAuth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: The email of the user
+ *               password:
+ *                 type: string
+ *                 description: The password of the user
+ *     responses:
+ *       200:
+ *         description: Login successful, returns a JWT token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: The generated JWT token
+ *       400:
+ *         description: Invalid credentials
+ *       500:
+ *         description: Server error
+ */
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {

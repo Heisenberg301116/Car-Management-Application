@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000/api'; // Use '/api' prefix to match backend routes
+const SERVER_URL = process.env.REACT_APP_SERVER_BASE_URL;
+const API_BASE_URL = `${SERVER_URL}/api`;
+
+// console.log("=======================> SERVER_URL = ", SERVER_URL)
+// console.log("=======================> api_base = ", API_BASE_URL)
 
 // Function to get the token from localStorage or wherever you store it
 const getAuthToken = () => {

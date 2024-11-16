@@ -1,21 +1,39 @@
-import { useContext } from "react";
-import React from 'react';
-import { NavLink } from 'react-router-dom';  // Import NavLink
-import './Header.css'; // Optional: Add custom CSS for styling
+import React, { useState, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import './Header.css';
 import { DataContext } from '../context/DataProvider';
 
 const Header = () => {
-    const { loggedin } = useContext(DataContext); // Get login state from context
+    const { loggedin } = useContext(DataContext);
+    const [menuOpen, setMenuOpen] = useState(false); // State for menu toggle
+
+    const toggleMenu = () => {
+        setMenuOpen((prev) => !prev); // Toggle the menu state
+    };
 
     return (
         <header className="header-container">
             <nav className="navbar">
-                <ul className="navbar-links">
+                {/* Logo or Title */}
+                <div className="navbar-logo">CarApp</div>
 
+                {/* Hamburger Menu Icon */}
+                <div
+                    className={`navbar-hamburger ${menuOpen ? 'open' : ''}`}
+                    onClick={toggleMenu}
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                {/* Navigation Links */}
+                <ul className={`navbar-links ${menuOpen ? 'navbar-links-open' : ''}`}>
                     <li className="navbar-item">
                         <NavLink
                             to="/login"
                             className={({ isActive }) => (isActive ? 'navbar-link active-link' : 'navbar-link')}
+                            onClick={() => setMenuOpen(false)} // Close menu when link is clicked
                         >
                             Login
                         </NavLink>
@@ -25,6 +43,7 @@ const Header = () => {
                         <NavLink
                             to="/signup"
                             className={({ isActive }) => (isActive ? 'navbar-link active-link' : 'navbar-link')}
+                            onClick={() => setMenuOpen(false)} // Close menu when link is clicked
                         >
                             Signup
                         </NavLink>
@@ -37,6 +56,7 @@ const Header = () => {
                                 <NavLink
                                     to="/cars"
                                     className={({ isActive }) => (isActive ? 'navbar-link active-link' : 'navbar-link')}
+                                    onClick={() => setMenuOpen(false)} // Close menu when link is clicked
                                 >
                                     My Cars
                                 </NavLink>
@@ -45,6 +65,7 @@ const Header = () => {
                                 <NavLink
                                     to="/add-car"
                                     className={({ isActive }) => (isActive ? 'navbar-link active-link' : 'navbar-link')}
+                                    onClick={() => setMenuOpen(false)} // Close menu when link is clicked
                                 >
                                     Add Car
                                 </NavLink>

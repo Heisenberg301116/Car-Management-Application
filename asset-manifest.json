@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Car-Management-Application/static/css/main.9a778119.css",
-    "main.js": "/Car-Management-Application/static/js/main.96a662d4.js",
+    "main.css": "/Car-Management-Application/static/css/main.3ae8adb0.css",
+    "main.js": "/Car-Management-Application/static/js/main.fe70bc5a.js",
     "static/js/453.419a5d54.chunk.js": "/Car-Management-Application/static/js/453.419a5d54.chunk.js",
     "index.html": "/Car-Management-Application/index.html",
-    "main.9a778119.css.map": "/Car-Management-Application/static/css/main.9a778119.css.map",
-    "main.96a662d4.js.map": "/Car-Management-Application/static/js/main.96a662d4.js.map",
+    "main.3ae8adb0.css.map": "/Car-Management-Application/static/css/main.3ae8adb0.css.map",
+    "main.fe70bc5a.js.map": "/Car-Management-Application/static/js/main.fe70bc5a.js.map",
     "453.419a5d54.chunk.js.map": "/Car-Management-Application/static/js/453.419a5d54.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a778119.css",
-    "static/js/main.96a662d4.js"
+    "static/css/main.3ae8adb0.css",
+    "static/js/main.fe70bc5a.js"
   ]
 }

@@ -27,17 +27,17 @@ The Car Management System is built using the MERN stack (MongoDB, Express.js, Re
 The Car Management System uses MongoDB as its database, which is structured around two main entities: Car and User. The relationships between these entities are captured using references (ObjectIds) to maintain the system’s integrity.
 
 **Key Entities:**  
-&nbsp;&nbsp;&nbsp;&nbsp;a) User  
+&nbsp;&nbsp;&nbsp;&nbsp;**a) User**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) email: Stores the user's email address, which is unique for each user.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) password: Stores the hashed password for user authentication.
 
 
-b) Car  
-      i) title: A string representing the car's title.  
-      ii) description: A string providing a detailed description of the car.  
-      iii) images: An array of strings where each string is the URL of an image associated with the car (up to 10 images).  
-      iv) tags: An array of strings used to categorize the car (e.g., car type, company, dealer).  
-      v) user_id: A reference to the User schema, linking each car to the user who owns or manages it. This ensures that users can only manage their own car listings.  
+&nbsp;&nbsp;&nbsp;&nbsp;**b) Car**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) title: A string representing the car's title.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) description: A string providing a detailed description of the car.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii) images: An array of strings where each string is the URL of an image associated with the car (up to 10 images).  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv) tags: An array of strings used to categorize the car (e.g., car type, company, dealer).  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v) user_id: A reference to the User schema, linking each car to the user who owns or manages it. This ensures that users can only manage their own car listings.  
 
 ## Setup
 1) Clone the repo into local system.

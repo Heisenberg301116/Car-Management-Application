@@ -28,8 +28,8 @@ The Car Management System uses MongoDB as its database, which is structured arou
 
 Key Entities: 
 a) User
-&nbsp;&nbsp;&nbsp;&nbsp;i) email: Stores the user's email address, which is unique for each user.
-&nbsp;&nbsp;&nbsp;&nbsp;ii) password: Stores the hashed password for user authentication.
+      - i) email: Stores the user's email address, which is unique for each user.
+      - ii) password: Stores the hashed password for user authentication.
 
 b) Car
       i) title: A string representing the car's title.

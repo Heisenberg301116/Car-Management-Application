@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3f47a12b-f858-4da2-9ed5-0b4df6be6576)# Car-Management-Application
+# Car Management System
 
 ## Overview
 The Car Management System is an application designed to help users manage their car listings. It allows users to:
@@ -11,7 +11,6 @@ The Car Management System is an application designed to help users manage their 
 The Car Management System follows a client-server architecture with a RESTful API. The application is structured to have a clear separation between the frontend and backend, where:
 
 1) Frontend: The user interface (UI) interacts with the backend through HTTP requests. It provides the necessary interfaces for managing car listings and performing actions like creating, viewing, editing, and deleting cars.
-
 2) Backend: The backend consists of a REST API that handles requests related to user authentication, car management, and search functionality. It communicates with the database and ensures the proper business logic and data validation.
 
 ## Technologies Used
@@ -42,14 +41,14 @@ v) user_id: A reference to the User schema, linking each car to the user who own
 ## Setup
 1) Clone the repo into local system.
 2) Move into client folder and install the required packages from package.json.
-3) Then create a .env file inside client folder and specify the following variable:`REACT_APP_SERVER_BASE_URL=http://localhost:8080`
+3) Then create a .env file inside client folder and specify the following variable: REACT_APP_SERVER_BASE_URL=`http://localhost:8080`
 4) Then move into the server folder and install the required packages from package.json.
 5) Then create a .env file inside server folder and specify the following variables:
-   MONGO_PASSWORD=<Your MongoDB Cluster Password>
-   MONGO_USERNAME=<Your MongoDB Cluster Username>
-   PORT=8080
-   JWT_SECRET=<Specify any complex JWT key such as: d82a2e4c14f3f8b7c9a6d8f72c1e8ba9c3d6e4b5a2f1d3c8a1b6f7e8c9d0e3a2>
-   CLOUDINARY_CLOUD_NAME=<Your Cloudinary cloud name where you will store images>
-   CLOUDINARY_API_KEY=<Your Cloudinary API key>
-   CLOUDINARY_API_SECRET=<Your Cloudinary API secret>
+      - MONGO_PASSWORD=`Your MongoDB Cluster Password`
+      - MONGO_USERNAME=`Your MongoDB Cluster Username`
+      - PORT=8080
+      - JWT_SECRET=`Specify any complex JWT key such as: d82a2e4c14f3f8b7c9a6d8f72c1e8ba9c3d6e4b5a2f1d3c8a1b6f7e8c9d0e3a2`
+      - CLOUDINARY_CLOUD_NAME=`Your Cloudinary cloud name where you will store images`
+      - CLOUDINARY_API_KEY=`Your Cloudinary API key`
+      - CLOUDINARY_API_SECRET=`Your Cloudinary API secret`
 7) That's all. Now run the client and server.

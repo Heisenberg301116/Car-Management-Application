@@ -26,10 +26,10 @@ The Car Management System is built using the MERN stack (MongoDB, Express.js, Re
 ## Database Design
 The Car Management System uses MongoDB as its database, which is structured around two main entities: Car and User. The relationships between these entities are captured using references (ObjectIds) to maintain the system’s integrity.
 
-Key Entities:  
-a) User  
-&nbsp;&nbsp;&nbsp;&nbsp;i) email: Stores the user's email address, which is unique for each user.  
-&nbsp;&nbsp;&nbsp;&nbsp;ii) password: Stores the hashed password for user authentication.
+**Key Entities:**  
+&nbsp;&nbsp;&nbsp;&nbsp;a) User  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i) email: Stores the user's email address, which is unique for each user.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii) password: Stores the hashed password for user authentication.
 
 
 b) Car  
